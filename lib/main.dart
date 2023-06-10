@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pariwisata_flutter/view/component/app_bar.dart';
+import 'package:pariwisata_flutter/view/component/bottom_navigation.dart';
 
 void main() {
   runApp(const MyApp());
