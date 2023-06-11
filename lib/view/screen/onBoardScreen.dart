@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pariwisata_flutter/theme/theme.app.dart';
 import 'package:pariwisata_flutter/view/component/app_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pariwisata_flutter/view/screen/registerScreen.dart';
+import 'package:pariwisata_flutter/view/screen/secondscreen.dart';
 
 class OnBoardScreen extends StatelessWidget {
   const OnBoardScreen({Key? key}) : super(key: key);
@@ -13,43 +15,81 @@ class OnBoardScreen extends StatelessWidget {
         body: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assests/gunung_biru.png'),
+                    image: AssetImage('assests/diatas_gunung.png'),
                     fit: BoxFit.cover)),
             child: SizedBox(
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: Card(
-                  child: Column(
-                    children: <Widget>[
-                      const Text(
-                          "Jember adalah kota yang kaya akan keindahan alam dan budaya."),
-                      const Text(
-                          "Apa jenis wisata yang Anda sukai? Saya bisa membantu memberikan rekomendasi tempat wisata yang sesuai dengan preferensi Anda."),
-                      Row(
-                        children: [
-                          TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            RegisterScreen()));
-                              },
-                              child: Text("Daftar")),
-                          TextButton(
-                              onPressed: () {
-                                Fluttertoast.showToast(
-                                    msg: "TOMBOL DI KLIK",
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.BOTTOM);
-                              },
-                              child: Text("Login"))
+                child: Container(
+                  height: 260,
+                  child: Card(
+                    child: Padding(padding: EdgeInsets.all(20),
+                      child:           Column(
+                        children: <Widget>[
+                          const Text(
+                              "Jember adalah kota yang kaya akan keindahan alam dan budaya.",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          const Text(
+                              "Apa jenis wisata yang Anda sukai? Saya bisa membantu memberikan rekomendasi tempat wisata yang sesuai dengan preferensi Anda."),
+                          Container(
+                            margin: EdgeInsets.only(top: 30),
+                            child:             Row(
+                              children: [
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RegisterScreen()));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        primary: greenColor,
+                                        onPrimary: Colors.white),
+                                  child: SizedBox(
+                                    width: 70,
+                                    height: 40,
+                                    child: Center(
+                                      child: Text("Daftar"),
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Fluttertoast.showToast(
+                                          msg: "TOMBOL DI KLIK",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.BOTTOM);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        primary: greenColor,
+                                        onPrimary: Colors.white),
+                                    child: SizedBox(
+                                      width: 70,
+                                      height: 40,
+                                      child: Center(
+                                          child: Text("Login"),
+                                      ),
+                                      ),
+                                    )
+
+
+                              ],
+                            ),
+                          )
                         ],
-                      )
-                    ],
+                      ),
+                    )
                   ),
                 ),
               ),
-            )));
+            )
+        )
+    );
   }
 }

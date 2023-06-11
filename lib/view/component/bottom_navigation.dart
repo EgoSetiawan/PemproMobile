@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:pariwisata_flutter/view/screen/home.screen.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
+
+import '../screen/registerScreen.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -29,12 +32,14 @@ class _BottomNavigationScreen extends State<BottomNavigation> {
           body: PageView(
             physics: const NeverScrollableScrollPhysics(),
             controller: pageController,
-            // children: [
-            // ContainerLayer()
-            // ],
+            children: [
+              HomeScreen(),
+              RegisterScreen(),
+            ],
           ),
           bottomNavigationBar: WaterDropNavBar(
             backgroundColor: Colors.white,
+            waterDropColor: Colors.green,
             onItemSelected: (index) {
               setState(() {
                 selectedIndex = index;
@@ -46,19 +51,15 @@ class _BottomNavigationScreen extends State<BottomNavigation> {
             selectedIndex: selectedIndex,
             barItems: [
               BarItem(
-                filledIcon: Icons.bookmark_rounded,
-                outlinedIcon: Icons.bookmark_border_rounded,
+                filledIcon: Icons.home_rounded,
+                outlinedIcon: Icons.home_outlined,
               ),
               BarItem(
-                  filledIcon: Icons.favorite_rounded,
-                  outlinedIcon: Icons.favorite_border_rounded),
+                  filledIcon: Icons.search_rounded,
+                  outlinedIcon: Icons.search_outlined),
               BarItem(
-                filledIcon: Icons.email_rounded,
-                outlinedIcon: Icons.email_outlined,
-              ),
-              BarItem(
-                filledIcon: Icons.folder_rounded,
-                outlinedIcon: Icons.folder_outlined,
+                filledIcon: Icons.person_3_rounded,
+                outlinedIcon: Icons.person_3_outlined,
               ),
             ],
           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pariwisata_flutter/view/component/app_bar.dart';
 import 'package:pariwisata_flutter/view/component/bottom_navigation.dart';
+import 'package:pariwisata_flutter/view/screen/firstOnBoardScreen.dart';
+import 'package:pariwisata_flutter/view/screen/home.screen.dart';
 import 'package:pariwisata_flutter/view/screen/onBoardScreen.dart';
 import 'package:pariwisata_flutter/view/screen/registerScreen.dart';
 
@@ -20,7 +22,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: OnBoardScreen() ,
+      home: FirstOnBoardScreen(),
+
       // routes: {
       //   '/onBoard' : (BuildContext ctx) => OnBoardScreen(),
       //   '/register'  : (BuildContext ctx) => RegisterScreen(),

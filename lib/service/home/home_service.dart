@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
-import '../../model/home/home_service.dart';
+import '../../model/home/home_model.dart';
 import 'package:http/http.dart' as http;
 
 
