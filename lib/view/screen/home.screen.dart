@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 
 import '../component/app_bar.dart';
 import '../component/bottom_navigation.dart';
+import 'detailScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -39,12 +40,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (context, index) {
                   return Container(
                     child: Card(
-                      child: Column(
-                        children: [
-                          Text(tourisStiteResult[index].touristSitesName),
-                          Image.network(tourisStiteResult[index].photoUrl)
-                        ],
-                      ),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailScreen(
+                                touristSite: tourisStiteResult[index],
+                              ),
+                            ),
+                          );
+                        },
+                        child:      Column(
+                          children: [
+                            Text(tourisStiteResult[index].touristSitesName),
+                            Image.network(tourisStiteResult[index].photoUrl)
+                          ],
+                        ),
+                      )
                     ),
 
                   );
@@ -54,7 +67,6 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       // bottomNavigationBar: BottomNavigation(),
-
     );
   }
   Future<TouristSitesResponse> getList() async{
