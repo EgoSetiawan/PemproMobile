@@ -12,6 +12,7 @@ import '../../theme/theme.app.dart';
 import '../component/app_bar.dart';
 import 'package:http/http.dart' as http;
 
+import 'loginScreen.dart';
 import 'onBoardScreen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -38,7 +39,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 940,
+              height: 460,
               width: double.infinity,
               child: Card(
                 color: Colors.white,
@@ -109,8 +110,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           setState(() {
                             _registerFuture = doRegister(_fullName.text, _email.text, _password.text);
                           });
-
-
                         },
                         style: ElevatedButton.styleFrom(
                           primary: greenColor,
@@ -124,38 +123,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                     ),
-                    if(_registerFuture != null)
-                      FutureBuilder<UserResponse>(
-                        future: _registerFuture,
-                        builder:(context,snapshot){
-                          if(snapshot.connectionState == ConnectionState.waiting){
-                            return const Center(child: CircularProgressIndicator());
-                          }else if(snapshot.hasError){
-                            return Center(
-                              child: Text('Error: ${snapshot.error}'),
-                            );
-                          } else {
-                            final user = snapshot.data!.message;
-                            Fluttertoast.showToast(
-                                msg: user,
-                                toastLength: Toast.LENGTH_SHORT,
-                                gravity: ToastGravity.BOTTOM);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => SecondScreen()),
-                            );
-                            return SizedBox.shrink();
-                          };
-                        },
-                      ),
+
                     Container(
                       margin: EdgeInsets.only(top: 20),
                       child: ElevatedButton(
                         onPressed: () {
-                          Fluttertoast.showToast(
-                              msg: _email.text,
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.BOTTOM);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      LoginScreen()));
                         },
                         style: ElevatedButton.styleFrom(
                           primary: greenColor,
@@ -184,11 +161,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
       };
       final response = await http.post(Uri.parse("https://732a-125-166-118-148.ngrok-free.app/register"),body: requestBody);
       if (response.statusCode == 200) {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()),);
+
         return UserResponse.fromJson(json.decode(response.body));
       } else {
         throw Exception("something went wrong HEHE");
       }
     } catch (e) {
+      Fluttertoast.showToast(
+          msg: "something went wrong KOCAK",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM);
       throw Exception("something went wrong KCCAK");
     }
   }

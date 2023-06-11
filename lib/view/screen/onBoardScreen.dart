@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pariwisata_flutter/theme/theme.app.dart';
 import 'package:pariwisata_flutter/view/component/app_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:pariwisata_flutter/view/screen/loginScreen.dart';
 import 'package:pariwisata_flutter/view/screen/registerScreen.dart';
 import 'package:pariwisata_flutter/view/screen/secondscreen.dart';
 
@@ -36,7 +37,7 @@ class OnBoardScreen extends StatelessWidget {
                           const Text(
                               "Apa jenis wisata yang Anda sukai? Saya bisa membantu memberikan rekomendasi tempat wisata yang sesuai dengan preferensi Anda."),
                           Container(
-                            margin: EdgeInsets.only(top: 30),
+                            margin: const EdgeInsets.only(top: 30),
                             child:             Row(
                               children: [
                                 ElevatedButton(
@@ -50,7 +51,7 @@ class OnBoardScreen extends StatelessWidget {
                                     style: ElevatedButton.styleFrom(
                                         primary: greenColor,
                                         onPrimary: Colors.white),
-                                  child: SizedBox(
+                                  child: const SizedBox(
                                     width: 70,
                                     height: 40,
                                     child: Center(
@@ -58,18 +59,19 @@ class OnBoardScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 ElevatedButton(
                                     onPressed: () {
-                                      Fluttertoast.showToast(
-                                          msg: "TOMBOL DI KLIK",
-                                          toastLength: Toast.LENGTH_SHORT,
-                                          gravity: ToastGravity.BOTTOM);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LoginScreen()));
                                     },
                                     style: ElevatedButton.styleFrom(
                                         primary: greenColor,
                                         onPrimary: Colors.white),
-                                    child: SizedBox(
+                                    child: const SizedBox(
                                       width: 70,
                                       height: 40,
                                       child: Center(
@@ -77,8 +79,6 @@ class OnBoardScreen extends StatelessWidget {
                                       ),
                                       ),
                                     )
-
-
                               ],
                             ),
                           )
