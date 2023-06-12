@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../component/app_bar.dart';
+// import '../component/app_bar.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -15,12 +15,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidgets(),
+      // appBar: const AppBarWidgets(),
       body: Card(
         child: Column(
           children: <Widget>[
             const Text("PENDAFTARAN AKUN"),
-
             const Text("Name Lengkap"),
             SizedBox(
               width: 400,
@@ -31,7 +30,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-
             const Text("Email"),
             SizedBox(
               width: 400,
@@ -42,7 +40,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-
             const Text("Password"),
             SizedBox(
               width: 400,
