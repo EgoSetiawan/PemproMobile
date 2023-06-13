@@ -42,116 +42,101 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 460,
               width: double.infinity,
               child: Card(
-                color: Colors.white,
+                  color: Colors.white,
                   child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    const Text(
-                      "Pendaftaran Akun",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                    const Text("Nama Lengkap"),
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 1
-                        ),
-                        borderRadius: BorderRadius.circular(8)
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(left:8),
-                        child: TextField(
-                          controller: _fullName,
-                        ),
-                      ),
-                    ),
-                    const Text("Email"),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.black,
-                              width: 1
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        const Text(
+                          "Pendaftaran Akun",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
                           ),
-                          borderRadius: BorderRadius.circular(8)
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(left:8),
-                        child: TextField(
-                          controller: _email,
                         ),
-                      ),
-                    ),
-                    const Text("Password"),
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.black,
-                              width: 1
+                        const Text("Nama Lengkap"),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black, width: 1),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 8),
+                            child: TextField(
+                              controller: _fullName,
+                            ),
                           ),
-                          borderRadius: BorderRadius.circular(8)
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(left:8),
-                        child: TextField(
-                          controller: _password,
                         ),
-                      ),
+                        const Text("Email"),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black, width: 1),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 8),
+                            child: TextField(
+                              controller: _email,
+                            ),
+                          ),
+                        ),
+                        const Text("Password"),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black, width: 1),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 8),
+                            child: TextField(
+                              controller: _password,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 20),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // setState(() {
+                              //   _registerFuture = doRegister(_fullName.text, _email.text, _password.text);
+                              // }
+                              // )
+                              _register();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: greenColor,
+                              onPrimary: Colors.white,
+                            ),
+                            child: const SizedBox(
+                                width: double
+                                    .infinity, // Mengatur lebar Container agar mengisi seluruh parent
+                                child: Center(
+                                  child: Text("Daftar"),
+                                )),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 20),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginScreen()));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: greenColor,
+                              onPrimary: Colors.white,
+                            ),
+                            child: Container(
+                                width: double
+                                    .infinity, // Mengatur lebar Container agar mengisi seluruh parent
+                                child: Center(
+                                  child: Text("Login"),
+                                )),
+                          ),
+                        )
+                      ],
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 20),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // setState(() {
-                          //   _registerFuture = doRegister(_fullName.text, _email.text, _password.text);
-                          // }
-                          // )
-                          _register()
-                          ;
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: greenColor,
-                          onPrimary: Colors.white,
-                        ),
-                        child: const SizedBox(
-                            width: double.infinity, // Mengatur lebar Container agar mengisi seluruh parent
-                            child: Center(
-                              child: Text("Daftar"),
-                            )
-                        ),
-                      ),
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.only(top: 20),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      LoginScreen()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: greenColor,
-                          onPrimary: Colors.white,
-                        ),
-                        child: Container(
-                            width: double.infinity, // Mengatur lebar Container agar mengisi seluruh parent
-                            child: Center(
-                              child: Text("Login"),
-                            )
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              )),
+                  )),
             ),
           ),
         ));
@@ -188,7 +173,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         'password': password
       };
       final response = await http.post(
-          Uri.parse("https://e59c-182-1-64-40.ngrok-free.app/auth/register"),
+          Uri.parse("https://fa88-118-99-83-50.ngrok-free.app/auth/register"),
           body: requestBody);
       return RegisterResponse.fromJson(json.decode(response.body));
     } catch (e) {
@@ -199,7 +184,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Future<void> _register() async {
     try {
       final registerResult =
-      await doRegisterx(_fullName.text, _email.text, _password.text);
+          await doRegisterx(_fullName.text, _email.text, _password.text);
       Fluttertoast.showToast(
         msg: registerResult.message,
         toastLength: Toast.LENGTH_SHORT,
@@ -219,6 +204,4 @@ class _RegisterScreenState extends State<RegisterScreen> {
       );
     }
   }
-
-
 }

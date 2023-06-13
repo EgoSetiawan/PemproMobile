@@ -58,14 +58,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         const Text("Email"),
                         Container(
                           decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.black,
-                                  width: 1
-                              ),
-                              borderRadius: BorderRadius.circular(8)
-                          ),
+                              border: Border.all(color: Colors.black, width: 1),
+                              borderRadius: BorderRadius.circular(8)),
                           child: Padding(
-                            padding: EdgeInsets.only(left:8),
+                            padding: EdgeInsets.only(left: 8),
                             child: TextField(
                               controller: _email,
                             ),
@@ -74,14 +70,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         const Text("Password"),
                         Container(
                           decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.black,
-                                  width: 1
-                              ),
-                              borderRadius: BorderRadius.circular(8)
-                          ),
+                              border: Border.all(color: Colors.black, width: 1),
+                              borderRadius: BorderRadius.circular(8)),
                           child: Padding(
-                            padding: EdgeInsets.only(left:8),
+                            padding: EdgeInsets.only(left: 8),
                             child: TextField(
                               controller: _password,
                             ),
@@ -101,14 +93,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               onPrimary: Colors.white,
                             ),
                             child: const SizedBox(
-                                width: double.infinity, // Mengatur lebar Container agar mengisi seluruh parent
+                                width: double
+                                    .infinity, // Mengatur lebar Container agar mengisi seluruh parent
                                 child: Center(
                                   child: Text("Login"),
-                                )
-                            ),
+                                )),
                           ),
                         ),
-
                         Container(
                           margin: EdgeInsets.only(top: 20),
                           child: ElevatedButton(
@@ -116,19 +107,18 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          RegisterScreen()));
+                                      builder: (context) => RegisterScreen()));
                             },
                             style: ElevatedButton.styleFrom(
                               primary: greenColor,
                               onPrimary: Colors.white,
                             ),
                             child: Container(
-                                width: double.infinity, // Mengatur lebar Container agar mengisi seluruh parent
+                                width: double
+                                    .infinity, // Mengatur lebar Container agar mengisi seluruh parent
                                 child: Center(
                                   child: Text("Daftar"),
-                                )
-                            ),
+                                )),
                           ),
                         )
                       ],
@@ -161,16 +151,11 @@ class _LoginScreenState extends State<LoginScreen> {
   //   }
   // }
 
-
-  Future<LoginResponse> doLoginx(
-      String email, String password) async {
+  Future<LoginResponse> doLoginx(String email, String password) async {
     try {
-      Map<String, dynamic> requestBody = {
-        'email': email,
-        'password': password
-      };
+      Map<String, dynamic> requestBody = {'email': email, 'password': password};
       final response = await http.post(
-          Uri.parse("https://e59c-182-1-64-40.ngrok-free.app/auth/login"),
+          Uri.parse("https://fa88-118-99-83-50.ngrok-free.app/auth/login"),
           body: requestBody);
       return LoginResponse.fromJson(json.decode(response.body));
     } catch (e) {
