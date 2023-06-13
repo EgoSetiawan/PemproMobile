@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:pariwisata_flutter/theme/theme.app.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
+import '../screen/registerScreen.dart';
+
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
 

@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:pariwisata_flutter/view/screen/home.screen.dart';
+import 'package:pariwisata_flutter/view/screen/secondscreen.dart';
 
 // import '../component/app_bar.dart';
 
@@ -12,6 +16,11 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final TextEditingController _fullName = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+
+  Future<UserResponse>? _registerFuture;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +37,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                 ),
-              ),
+              )),
             ),
             const Text("Email"),
             SizedBox(

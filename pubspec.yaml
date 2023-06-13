@@ -41,6 +41,8 @@ dependencies:
   flutter_svg: ^2.0.6
   # add this line to your dependencies
   fluttertoast: ^8.2.2
+  http: ^0.13.3
+  google_maps_flutter: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +71,9 @@ flutter:
     - assets/icon_touring_jember.svg
     - assets/Minimalist_Floral_Embroidery_Logo.png
     - assets/Background.png
+    - assests/icon_touring_jember.svg
+    - assests/gunung_biru.png
+    - assests/diatas_gunung.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
