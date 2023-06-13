@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pariwisata_flutter/view/screen/onBoardScreen.dart';
-import 'package:pariwisata_flutter/view/screen/secondscreen.dart';
 
-import '../../theme/theme.app.dart';
 import '../component/app_bar.dart';
 
 class FirstOnBoardScreen extends StatelessWidget {
@@ -59,36 +56,6 @@ class FirstOnBoardScreen extends StatelessWidget {
                               ),
                             ),
                           )
-
-                        // Row(
-                            //   children: [
-                            //     ElevatedButton(
-                            //         onPressed: () {
-                            //           Navigator.push(
-                            //               context,
-                            //               MaterialPageRoute(
-                            //                   builder: (context) =>
-                            //                       SecondScreen()));
-                            //         },
-                            //         style: ElevatedButton.styleFrom(
-                            //             primary: greenColor,
-                            //             onPrimary: Colors.white),
-                            //         child: Text("Daftar")),
-                            //     Spacer(),
-                            //     ElevatedButton(
-                            //         onPressed: () {
-                            //           Fluttertoast.showToast(
-                            //               msg: "TOMBOL DI KLIK",
-                            //               toastLength: Toast.LENGTH_SHORT,
-                            //               gravity: ToastGravity.BOTTOM);
-                            //         },
-                            //         style: ElevatedButton.styleFrom(
-                            //             primary: greenColor,
-                            //             onPrimary: Colors.white),
-                            //         child: Text("Login"))
-                            //   ],
-                            // ),
-
                       ],
                     ),
                   )),

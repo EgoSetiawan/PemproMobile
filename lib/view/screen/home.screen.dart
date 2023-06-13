@@ -20,26 +20,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const AppBarWidgets(),
-        body: FutureBuilder<TouristSitesResponse>(
-          future: getList(),
-          builder: (context,snapshot){
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }else if(snapshot.hasError){
-              return Center(
-                child: Text('Error: ${snapshot.error}'),
-              );
-            } else{
-              List<TouristSite> tourisStiteResult = snapshot.data!.touristSites;
-              // Tampilkan data dalam ListView
-              return ListView.builder(
-                itemCount: tourisStiteResult.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    child: Card(
+      appBar: const AppBarWidgets(),
+      body: FutureBuilder<HomeResonponse>(
+        future: getList(),
+        builder: (context,snapshot){
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }else if(snapshot.hasError){
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          } else{
+            List<TouristSite> tourisStiteResult = snapshot.data!.touristSites;
+            // Tampilkan data dalam ListView
+            return ListView.builder(
+              itemCount: tourisStiteResult.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  child: Card(
                       child: InkWell(
                         onTap: (){
                           Navigator.push(
@@ -51,29 +51,66 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           );
                         },
-                        child:      Column(
+                        child:
+                        Stack(
                           children: [
-                            Text(tourisStiteResult[index].touristSitesName),
-                            Image.network(tourisStiteResult[index].photoUrl)
+                            ShaderMask(
+                              shaderCallback: (bounds) {
+                                return LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [Colors.transparent, Colors.black],
+                                  stops: [0.7, 1.0],
+                                ).createShader(bounds);
+                              },
+                              blendMode: BlendMode.darken,
+                              child: Image.network(
+                                tourisStiteResult[index].photoUrl,
+                                fit: BoxFit.cover,
+                                height: 200, // Sesuaikan tinggi gambar sesuai kebutuhan
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 16, // Sesuaikan posisi teks sesuai kebutuhan
+                              left: 16, // Sesuaikan posisi teks sesuai kebutuhan
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    tourisStiteResult[index].touristSitesName,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18, // Sesuaikan ukuran font sesuai kebutuhan
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    tourisStiteResult[index].category,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14, // Sesuaikan ukuran font sesuai kebutuhan
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       )
-                    ),
-
-                  );
-                },
-              );
-            };
-          },
-        ),
-      // bottomNavigationBar: BottomNavigation(),
+                  ),
+                );
+              },
+            );
+          };
+        },
+      ),
     );
   }
-  Future<TouristSitesResponse> getList() async{
+  Future<HomeResonponse> getList() async{
     try {
-      final response = await http.get(Uri.parse("https://732a-125-166-118-148.ngrok-free.app/home"));
+      final response = await http.get(Uri.parse("https://e59c-182-1-64-40.ngrok-free.app/home/all"));
       if (response.statusCode == 200) {
-        return TouristSitesResponse.fromJson(json.decode(response.body));
+        return HomeResonponse.fromJson(json.decode(response.body));
       } else {
         throw Exception("something went wrong");
       }

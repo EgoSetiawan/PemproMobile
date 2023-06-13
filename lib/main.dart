@@ -19,15 +19,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "HOME",
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
       home: FirstOnBoardScreen(),
-
-      // routes: {
-      //   '/onBoard' : (BuildContext ctx) => OnBoardScreen(),
-      //   '/register'  : (BuildContext ctx) => RegisterScreen(),
-      // },
     );
   }
 }

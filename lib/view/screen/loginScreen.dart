@@ -91,9 +91,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           margin: EdgeInsets.only(top: 20),
                           child: ElevatedButton(
                             onPressed: () {
-                              setState(() {
-                                _loginFuture = doLogin(_email.text, _password.text);
-                              });
+                              // setState(() {
+                              //   _loginFuture = doLogin(_email.text, _password.text);
+                              // });
+                              _login();
                             },
                             style: ElevatedButton.styleFrom(
                               primary: greenColor,
@@ -138,25 +139,67 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 
-  Future<LoginResponse> doLogin(String email , String password) async{
-    try {
-      Map<String,dynamic> requestBody ={
-        'email' : email , 'password' :password
-      };
-      final response = await http.post(Uri.parse("https://732a-125-166-118-148.ngrok-free.app/login"),body: requestBody);
-      if (response.statusCode == 200) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SecondScreen()),);
+  // Future<LoginResponse> doLogin(String email , String password) async{
+  //   try {
+  //     Map<String,dynamic> requestBody ={
+  //       'email' : email , 'password' :password
+  //     };
+  //     final response = await http.post(Uri.parse("https://732a-125-166-118-148.ngrok-free.app/login"),body: requestBody);
+  //     if (response.statusCode == 200) {
+  //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SecondScreen()),);
+  //
+  //       return LoginResponse.fromJson(json.decode(response.body));
+  //     } else {
+  //       throw Exception("something went wrong HEHE");
+  //     }
+  //   } catch (e) {
+  //     Fluttertoast.showToast(
+  //         msg: "something went wrong KOCAK",
+  //         toastLength: Toast.LENGTH_SHORT,
+  //         gravity: ToastGravity.BOTTOM);
+  //     throw Exception("something went wrong KCCAK");
+  //   }
+  // }
 
-        return LoginResponse.fromJson(json.decode(response.body));
-      } else {
-        throw Exception("something went wrong HEHE");
+
+  Future<LoginResponse> doLoginx(
+      String email, String password) async {
+    try {
+      Map<String, dynamic> requestBody = {
+        'email': email,
+        'password': password
+      };
+      final response = await http.post(
+          Uri.parse("https://e59c-182-1-64-40.ngrok-free.app/auth/login"),
+          body: requestBody);
+      return LoginResponse.fromJson(json.decode(response.body));
+    } catch (e) {
+      throw Exception("Terjadi kesalahan saat Login");
+    }
+  }
+
+  Future<void> _login() async {
+    try {
+      final loginResult = await doLoginx(_email.text, _password.text);
+
+      Fluttertoast.showToast(
+        msg: loginResult.message,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
+      if (!loginResult.error) {
+        // await UserSimplePreferences.setUsername(loginResult.loginResult.userId);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => SecondScreen()),
+        );
       }
     } catch (e) {
       Fluttertoast.showToast(
-          msg: "something went wrong KOCAK",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM);
-      throw Exception("something went wrong KCCAK");
+        msg: "Terjadi kesalahan saat Login",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
     }
   }
 }

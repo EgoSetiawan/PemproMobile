@@ -27,7 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
-  Future<UserResponse>? _registerFuture;
+  // Future<UserResponse>? _registerFuture;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -107,9 +107,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       margin: EdgeInsets.only(top: 20),
                       child: ElevatedButton(
                         onPressed: () {
-                          setState(() {
-                            _registerFuture = doRegister(_fullName.text, _email.text, _password.text);
-                          });
+                          // setState(() {
+                          //   _registerFuture = doRegister(_fullName.text, _email.text, _password.text);
+                          // }
+                          // )
+                          _register()
+                          ;
                         },
                         style: ElevatedButton.styleFrom(
                           primary: greenColor,
@@ -154,25 +157,68 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ));
   }
 
-  Future<UserResponse> doRegister(String name,String email , String password) async{
-    try {
-      Map<String,dynamic> requestBody ={
-        'fullname' :name, 'email' : email , 'password' :password
-      };
-      final response = await http.post(Uri.parse("https://732a-125-166-118-148.ngrok-free.app/register"),body: requestBody);
-      if (response.statusCode == 200) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()),);
+  // Future<RegisterResponse> doRegister(String name,String email , String password) async{
+  //   try {
+  //     Map<String,dynamic> requestBody ={
+  //       'fullname' :name, 'email' : email , 'password' :password
+  //     };
+  //     final response = await http.post(Uri.parse("https://e59c-182-1-64-40.ngrok-free.app/auth/register"),body: requestBody);
+  //     if (response.statusCode == 200) {
+  //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()),);
+  //
+  //       return RegisterResponse.fromJson(json.decode(response.body));
+  //     } else {
+  //       throw Exception("something went wrong HEHE");
+  //     }
+  //   } catch (e) {
+  //     Fluttertoast.showToast(
+  //         msg: "something went wrong KOCAK",
+  //         toastLength: Toast.LENGTH_SHORT,
+  //         gravity: ToastGravity.BOTTOM);
+  //     throw Exception("something went wrong KCCAK");
+  //   }
+  // }
 
-        return UserResponse.fromJson(json.decode(response.body));
-      } else {
-        throw Exception("something went wrong HEHE");
+  Future<RegisterResponse> doRegisterx(
+      String name, String email, String password) async {
+    try {
+      Map<String, dynamic> requestBody = {
+        'namalengkap': name,
+        'email': email,
+        'password': password
+      };
+      final response = await http.post(
+          Uri.parse("https://e59c-182-1-64-40.ngrok-free.app/auth/register"),
+          body: requestBody);
+      return RegisterResponse.fromJson(json.decode(response.body));
+    } catch (e) {
+      throw Exception("Terjadi kesalahan saat registrasi");
+    }
+  }
+
+  Future<void> _register() async {
+    try {
+      final registerResult =
+      await doRegisterx(_fullName.text, _email.text, _password.text);
+      Fluttertoast.showToast(
+        msg: registerResult.message,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
+      if (!registerResult.error) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => LoginScreen()),
+        );
       }
     } catch (e) {
       Fluttertoast.showToast(
-          msg: "something went wrong KOCAK",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM);
-      throw Exception("something went wrong KCCAK");
+        msg: "Terjadi kesalahan saat registrasi",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
     }
   }
+
+
 }
