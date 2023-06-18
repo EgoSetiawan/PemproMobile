@@ -83,6 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             padding: EdgeInsets.only(left: 8),
                             child: TextField(
                               controller: _email,
+
                             ),
                           ),
                         ),
@@ -97,6 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             padding: EdgeInsets.only(left: 8),
                             child: TextField(
                               controller: _password,
+                              obscureText: true,
                             ),
                           ),
                         ),
