@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:pariwisata_flutter/view/screen/home.screen.dart';
+import 'package:pariwisata_flutter/view/screen/searchScreen.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 import '../screen/profilScreen.dart';
 import '../screen/registerScreen.dart';
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key});
+  final String userId;
+  const BottomNavigation({super.key,required this.userId});
 
   @override
   State<BottomNavigation> createState() => _BottomNavigationScreen();
@@ -32,7 +34,7 @@ class _BottomNavigationScreen extends State<BottomNavigation> {
           body: PageView(
             physics: const NeverScrollableScrollPhysics(),
             controller: pageController,
-            children: [HomeScreen(), RegisterScreen(), ProfileScreen()],
+            children: [HomeScreen(), SearchScreen(), ProfileScreen(userId: widget.userId,)],
           ),
           bottomNavigationBar: WaterDropNavBar(
             backgroundColor: Colors.white,

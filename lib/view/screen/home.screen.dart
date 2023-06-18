@@ -7,7 +7,6 @@ import '../../model/home/home_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../component/app_bar.dart';
-import '../component/bottom_navigation.dart';
 import 'detailScreen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -42,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return Container(
                   child: Card(
                       child: InkWell(
-                    onTap: () {
+                    onTap: () async {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -111,9 +110,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<HomeResonponse> getList() async {
+
     try {
       final response = await http
-          .get(Uri.parse("https://fa88-118-99-83-50.ngrok-free.app/home/all"));
+          .get(Uri.parse("https://ff6f-114-125-77-36.ngrok-free.app/home/all"));
       if (response.statusCode == 200) {
         return HomeResonponse.fromJson(json.decode(response.body));
       } else {

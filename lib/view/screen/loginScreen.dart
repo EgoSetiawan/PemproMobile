@@ -1,20 +1,17 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pariwisata_flutter/model/login/login_model.dart';
-import 'package:pariwisata_flutter/view/screen/home.screen.dart';
 import 'package:pariwisata_flutter/view/screen/registerScreen.dart';
 import 'package:pariwisata_flutter/view/screen/secondscreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../model/home/home_model.dart';
-import '../../model/register/register_model.dart';
 import '../../theme/theme.app.dart';
-import '../component/app_bar.dart';
 import 'package:http/http.dart' as http;
 
-import 'onBoardScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -115,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             child: Container(
                                 width: double
-                                    .infinity, // Mengatur lebar Container agar mengisi seluruh parent
+                                    .infinity,
                                 child: Center(
                                   child: Text("Daftar"),
                                 )),
@@ -129,33 +126,16 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 
-  // Future<LoginResponse> doLogin(String email , String password) async{
-  //   try {
-  //     Map<String,dynamic> requestBody ={
-  //       'email' : email , 'password' :password
-  //     };
-  //     final response = await http.post(Uri.parse("https://732a-125-166-118-148.ngrok-free.app/login"),body: requestBody);
-  //     if (response.statusCode == 200) {
-  //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SecondScreen()),);
-  //
-  //       return LoginResponse.fromJson(json.decode(response.body));
-  //     } else {
-  //       throw Exception("something went wrong HEHE");
-  //     }
-  //   } catch (e) {
-  //     Fluttertoast.showToast(
-  //         msg: "something went wrong KOCAK",
-  //         toastLength: Toast.LENGTH_SHORT,
-  //         gravity: ToastGravity.BOTTOM);
-  //     throw Exception("something went wrong KCCAK");
-  //   }
-  // }
+  void saveUserId(String userId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('userId', userId);
+  }
 
   Future<LoginResponse> doLoginx(String email, String password) async {
     try {
       Map<String, dynamic> requestBody = {'email': email, 'password': password};
       final response = await http.post(
-          Uri.parse("https://fa88-118-99-83-50.ngrok-free.app/auth/login"),
+          Uri.parse("https://ff6f-114-125-77-36.ngrok-free.app/auth/login"),
           body: requestBody);
       return LoginResponse.fromJson(json.decode(response.body));
     } catch (e) {
@@ -173,10 +153,10 @@ class _LoginScreenState extends State<LoginScreen> {
         gravity: ToastGravity.BOTTOM,
       );
       if (!loginResult.error) {
-        // await UserSimplePreferences.setUsername(loginResult.loginResult.userId);
+        final userId = loginResult.loginResult.userId.toString();
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => SecondScreen()),
+          MaterialPageRoute(builder: (context) => SecondScreen(userId: userId)),
         );
       }
     } catch (e) {

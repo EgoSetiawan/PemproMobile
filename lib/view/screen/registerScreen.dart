@@ -142,27 +142,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ));
   }
 
-  // Future<RegisterResponse> doRegister(String name,String email , String password) async{
-  //   try {
-  //     Map<String,dynamic> requestBody ={
-  //       'fullname' :name, 'email' : email , 'password' :password
-  //     };
-  //     final response = await http.post(Uri.parse("https://e59c-182-1-64-40.ngrok-free.app/auth/register"),body: requestBody);
-  //     if (response.statusCode == 200) {
-  //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()),);
-  //
-  //       return RegisterResponse.fromJson(json.decode(response.body));
-  //     } else {
-  //       throw Exception("something went wrong HEHE");
-  //     }
-  //   } catch (e) {
-  //     Fluttertoast.showToast(
-  //         msg: "something went wrong KOCAK",
-  //         toastLength: Toast.LENGTH_SHORT,
-  //         gravity: ToastGravity.BOTTOM);
-  //     throw Exception("something went wrong KCCAK");
-  //   }
-  // }
 
   Future<RegisterResponse> doRegisterx(
       String name, String email, String password) async {
@@ -173,7 +152,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         'password': password
       };
       final response = await http.post(
-          Uri.parse("https://fa88-118-99-83-50.ngrok-free.app/auth/register"),
+          Uri.parse("https://ff6f-114-125-77-36.ngrok-free.app/auth/register"),
           body: requestBody);
       return RegisterResponse.fromJson(json.decode(response.body));
     } catch (e) {

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pariwisata_flutter/theme/theme.app.dart';
 import 'package:pariwisata_flutter/view/component/app_bar.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pariwisata_flutter/view/screen/loginScreen.dart';
 import 'package:pariwisata_flutter/view/screen/registerScreen.dart';
-import 'package:pariwisata_flutter/view/screen/secondscreen.dart';
 
 class OnBoardScreen extends StatelessWidget {
   const OnBoardScreen({Key? key}) : super(key: key);

@@ -27,14 +27,12 @@ class MapScreen extends StatelessWidget {
     );
   }
   Set<Marker> _createMarkers() {
-    // Buat set kosong untuk menyimpan marker
     Set<Marker> markers = {};
-    // Buat marker pertama
     Marker marker1 = Marker(
       markerId: MarkerId('marker1'),
       position: LatLng(locationLatitude, locationLongtitude),
       infoWindow: InfoWindow(
-        title: 'Marker 1',
+        title: 'Tourist Site',
         snippet: 'Deskripsi marker 1',
       ),
     );

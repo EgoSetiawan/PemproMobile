@@ -1,8 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:pariwisata_flutter/view/screen/map_screen.dart';
 import '../../model/home/home_model.dart';
 import '../../theme/theme.app.dart';
-import 'loginScreen.dart';
 
 class DetailScreen extends StatelessWidget {
   final TouristSite touristSite;
