@@ -138,7 +138,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Future<SearchResponse> getList({String? searchKeyword}) async {
     try {
       final response = await http.get(Uri.parse(
-          "https://ff6f-114-125-77-36.ngrok-free.app/home/search?search=$searchKeyword"));
+          "https://b97f-114-125-77-36.ngrok-free.app/home/search?search=$searchKeyword"));
       if (response.statusCode == 200) {
         return SearchResponse.fromJson(json.decode(response.body));
       } else {

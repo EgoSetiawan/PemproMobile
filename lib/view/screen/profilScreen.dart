@@ -85,7 +85,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<DetailResponse> getUser(String userId) async {
     try {
       final response = await http.get(Uri.parse(
-          "https://ff6f-114-125-77-36.ngrok-free.app/user/getId/$userId"));
+          "https://b97f-114-125-77-36.ngrok-free.app/user/getId/$userId"));
       if (response.statusCode == 200) {
         return DetailResponse.fromJson(json.decode(response.body));
       } else {
@@ -99,7 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<DeleteResponse> deleteUser(String userId) async {
     try {
       final response = await http.delete(Uri.parse(
-          "https://ff6f-114-125-77-36.ngrok-free.app/user/delete/$userId"));
+          "https://b97f-114-125-77-36.ngrok-free.app/user/delete/$userId"));
       if (response.statusCode == 200) {
         Navigator.pushReplacement(
           context,

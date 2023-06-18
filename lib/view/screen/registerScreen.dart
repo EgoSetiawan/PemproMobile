@@ -165,7 +165,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         'password': password
       };
       final response = await http.post(
-          Uri.parse("https://ff6f-114-125-77-36.ngrok-free.app/auth/register"),
+          Uri.parse("https://b97f-114-125-77-36.ngrok-free.app/auth/register"),
           body: requestBody);
       return RegisterResponse.fromJson(json.decode(response.body));
     } catch (e) {

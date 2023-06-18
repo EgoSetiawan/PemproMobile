@@ -123,7 +123,7 @@ class _EditScreenState extends State<EditScreen> {
     try {
       var request = http.MultipartRequest(
         'PUT',
-        Uri.parse("https://ff6f-114-125-77-36.ngrok-free.app/user/update/$userId"),
+        Uri.parse("https://b97f-114-125-77-36.ngrok-free.app/user/update/$userId"),
       );
 
       if (photoUrl != null) {

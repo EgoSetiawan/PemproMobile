@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       Map<String, dynamic> requestBody = {'email': email, 'password': password};
       final response = await http.post(
-          Uri.parse("https://ff6f-114-125-77-36.ngrok-free.app/auth/login"),
+          Uri.parse("https://b97f-114-125-77-36.ngrok-free.app/auth/login"),
           body: requestBody);
       return LoginResponse.fromJson(json.decode(response.body));
     } catch (e) {
