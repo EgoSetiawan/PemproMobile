@@ -7,8 +7,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  final a = -8.436404;
-  final b = 113.581301;
 
   @override
   Widget build(BuildContext context) {
