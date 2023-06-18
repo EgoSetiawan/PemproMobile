@@ -26,11 +26,9 @@ class MapScreen extends StatelessWidget {
       ),
     );
   }
-
   Set<Marker> _createMarkers() {
     // Buat set kosong untuk menyimpan marker
     Set<Marker> markers = {};
-
     // Buat marker pertama
     Marker marker1 = Marker(
       markerId: MarkerId('marker1'),
@@ -41,7 +39,6 @@ class MapScreen extends StatelessWidget {
       ),
     );
     markers.add(marker1);
-
     return markers;
   }
 }

@@ -1,33 +1,26 @@
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pariwisata_flutter/theme/theme.app.dart';
 
 class AppBarWidgets extends StatelessWidget implements PreferredSize {
   const AppBarWidgets({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-      backgroundColor: Colors.blue,
-      // title: Text('aww'),
-      // title: SvgPicture.asset('assets/icon_touring_jember.svg'),
-      actions: [
-        SizedBox(
-          child: IconButton(
-            icon: SvgPicture.asset(
-              'assets/icon_touring_jember.svg',
-              width: 10,
-              height: 10,
-              color: Colors.white,
-            ),
-            onPressed: () => {},
-          ),
-        )
-      ],
-      // leading: SvgPicture.asset(''),
-    ));
+    return AppBar(
+      leading: IconButton(
+        icon: Image.asset("assests/images/icon_touring_jember.png"),
+        onPressed: () {},
+      ),
+      leadingWidth: 70,
+      // ignore: prefer_const_constructors
+      title: Text(
+        "Touring Jember",
+        style: const TextStyle(
+            color: Color(0xFF198754),
+            fontWeight: FontWeight.w400,
+            fontSize: 15),
+      ),
+      titleSpacing: -5,
+    );
   }
 
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/rendering.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:pariwisata_flutter/theme/theme.app.dart';
+import 'package:pariwisata_flutter/view/screen/home.screen.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
-
+import '../screen/profilScreen.dart';
 import '../screen/registerScreen.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -32,11 +32,11 @@ class _BottomNavigationScreen extends State<BottomNavigation> {
           body: PageView(
             physics: const NeverScrollableScrollPhysics(),
             controller: pageController,
-            children: [Container()],
+            children: [HomeScreen(), RegisterScreen(), ProfileScreen()],
           ),
           bottomNavigationBar: WaterDropNavBar(
             backgroundColor: Colors.white,
-            waterDropColor: greenColor,
+            waterDropColor: Colors.green,
             onItemSelected: (index) {
               setState(() {
                 selectedIndex = index;

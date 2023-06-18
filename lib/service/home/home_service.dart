@@ -6,20 +6,20 @@ import '../../model/home/home_model.dart';
 import 'package:http/http.dart' as http;
 
 
-class ApiService{
-  Future<TouristSitesResponse> getList() async{
-    try {
-      final response = await http.get(Uri.parse("https://327b-125-166-118-235.ngrok-free.app/home"));
-      if (response.statusCode == 200) {
-        return TouristSitesResponse.fromJson(json.decode(response.body));
-      } else {
-        throw Exception("something went wrong");
-      }
-    } catch (e) {
-      throw Exception("something went wrong");
-    }
-  }
-}
+// class ApiService{
+//   Future<TouristSitesResponse> getList() async{
+//     try {
+//       final response = await http.get(Uri.parse("https://327b-125-166-118-235.ngrok-free.app/home"));
+//       if (response.statusCode == 200) {
+//         return TouristSitesResponse.fromJson(json.decode(response.body));
+//       } else {
+//         throw Exception("something went wrong");
+//       }
+//     } catch (e) {
+//       throw Exception("something went wrong");
+//     }
+//   }
+// }
 
 // void fetchTouristSites() async {
 //   Dio dio = Dio();

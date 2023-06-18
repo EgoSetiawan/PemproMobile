@@ -17,22 +17,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // title: "HOME",
+      title: "HOME",
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+        fontFamily: "Poppins",
         useMaterial3: true,
       ),
-<<<<<<< HEAD
-      // appBar: AppBarWidgets()
-      home: OnBoardScreen(),
-=======
       home: FirstOnBoardScreen(),
-
->>>>>>> c72929906538e0ffac7773001e31ca220672f4ae
-      // routes: {
-      //   '/onBoard' : (BuildContext ctx) => OnBoardScreen(),
-      //   '/register'  : (BuildContext ctx) => RegisterScreen(),
-      // },
     );
   }
 }

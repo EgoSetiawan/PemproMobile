@@ -1,17 +1,27 @@
-class TouristSitesResponse {
+class HomeResonponse {
   bool error;
+  int code;
   String message;
   List<TouristSite> touristSites;
 
-  TouristSitesResponse({required this.error, required this.message, required this.touristSites});
+  HomeResonponse({
+    required this.error,
+    required this.code,
+    required this.message,
+    required this.touristSites,
+  });
 
-  factory TouristSitesResponse.fromJson(Map<String, dynamic> json) {
-    return TouristSitesResponse(
-      error: json['error'],
-      message: json['message'],
-      touristSites: List<TouristSite>.from(
-        json['touristSites'].map((x) => TouristSite.fromJson(x)),
-      ),
+  factory HomeResonponse.fromJson(Map<String, dynamic> json) {
+    List<dynamic> touristSitesJson = json['touristSities'];
+    List<TouristSite> touristSites = touristSitesJson
+        .map((touristSiteJson) => TouristSite.fromJson(touristSiteJson))
+        .toList();
+
+    return HomeResonponse(
+      error: json['error'] as bool,
+      code: json['code'] as int,
+      message: json['message'] as String,
+      touristSites: touristSites,
     );
   }
 }
@@ -37,13 +47,13 @@ class TouristSite {
 
   factory TouristSite.fromJson(Map<String, dynamic> json) {
     return TouristSite(
-      touristSitesId: json['touristSitesId'],
-      touristSitesName: json['touristSitesName'],
-      touristSitesDescription: json['touristSitesDescription'],
-      photoUrl: json['photo_url'],
-      category: json['category'],
-      lan: json['lan'].toDouble(),
-      lon: json['lon'].toDouble(),
+      touristSitesId: json['touristSitesId'] as int,
+      touristSitesName: json['touristSitesName'] as String,
+      touristSitesDescription: json['touristSitesDescription'] as String,
+      photoUrl: json['photo_url'] as String,
+      category: json['category'] as String,
+      lan: json['lan'] as double,
+      lon: json['lon'] as double,
     );
   }
 }
