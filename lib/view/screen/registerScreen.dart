@@ -33,7 +33,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assests/diatas_gunung.png'),
+                image: AssetImage('assests/images/diatas_gunung.png'),
                 fit: BoxFit.cover)),
         child: SizedBox(
           child: Align(
@@ -51,11 +51,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const Text(
                           "Pendaftaran Akun",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 24,
                           ),
                         ),
-                        const Text("Nama Lengkap"),
+                        Container(
+                          margin: EdgeInsets.only(top: 20),
+                          child: Text("Nama Lengkap",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 16)),
+                        ),
                         Container(
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.black, width: 1),
@@ -67,7 +72,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                         ),
-                        const Text("Email"),
+                        const Text("Email",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 16)),
                         Container(
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.black, width: 1),
@@ -79,7 +86,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                         ),
-                        const Text("Password"),
+                        const Text("Password",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 16)),
                         Container(
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.black, width: 1),
@@ -123,14 +132,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       builder: (context) => LoginScreen()));
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: greenColor,
-                              onPrimary: Colors.white,
+                              primary: Colors.white,
+                              onPrimary: Colors.black,
                             ),
                             child: Container(
                                 width: double
                                     .infinity, // Mengatur lebar Container agar mengisi seluruh parent
                                 child: Center(
-                                  child: Text("Login"),
+                                  child: Text("Belum mempunyai akun? Login",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w200,
+                                          fontSize: 12)),
                                 )),
                           ),
                         )
@@ -141,7 +153,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
         ));
   }
-
 
   Future<RegisterResponse> doRegisterx(
       String name, String email, String password) async {

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:pariwisata_flutter/view/screen/map_screen.dart';
 import '../../model/home/home_model.dart';
@@ -27,13 +26,13 @@ class DetailScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16),
-            Text(
-              'Location: ${touristSite.lan}',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
+            // SizedBox(height: 16),
+            // Text(
+            //   'Location: ${touristSite.lan}',
+            //   style: TextStyle(
+            //     fontSize: 16,
+            //   ),
+            // ),
             SizedBox(height: 16),
             Image.network(
               touristSite.photoUrl,
@@ -56,8 +55,7 @@ class DetailScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              MapScreen(
+                          builder: (context) => MapScreen(
                                 locationLatitude: touristSite.lan,
                                 locationLongtitude: touristSite.lon,
                               )));
@@ -67,11 +65,11 @@ class DetailScreen extends StatelessWidget {
                   onPrimary: Colors.white,
                 ),
                 child: Container(
-                    width: double.infinity, // Mengatur lebar Container agar mengisi seluruh parent
+                    width: double
+                        .infinity, // Mengatur lebar Container agar mengisi seluruh parent
                     child: Center(
                       child: Text("GET LOCATION"),
-                    )
-                ),
+                    )),
               ),
             )
           ],

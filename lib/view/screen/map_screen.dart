@@ -26,6 +26,7 @@ class MapScreen extends StatelessWidget {
       ),
     );
   }
+
   Set<Marker> _createMarkers() {
     Set<Marker> markers = {};
     Marker marker1 = Marker(

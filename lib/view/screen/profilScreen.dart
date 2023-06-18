@@ -8,7 +8,6 @@ import 'package:pariwisata_flutter/view/screen/loginScreen.dart';
 import '../../model/detail/detail_model.dart';
 import 'package:http/http.dart' as http;
 
-
 class ProfileScreen extends StatefulWidget {
   final String userId;
   ProfileScreen({required this.userId});
@@ -19,7 +18,6 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   String username = '';
   String photoUrl = '';
-
 
   @override
   void initState() {
@@ -34,12 +32,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         username = response.loginResult.namalengkap;
         photoUrl = response.loginResult.profile;
       });
-    } catch (e) {
-
-    }
+    } catch (e) {}
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +60,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 setState(() {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => EditScreen(userId: widget.userId,)),
+                    MaterialPageRoute(
+                        builder: (context) => EditScreen(
+                              userId: widget.userId,
+                            )),
                   );
-                }
-                )
-                ;
+                });
               },
               child: Text('Edit Profil'),
             ),
@@ -89,7 +84,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<DetailResponse> getUser(String userId) async {
     try {
-      final response = await http.get(Uri.parse("https://ff6f-114-125-77-36.ngrok-free.app/user/getId/$userId"));
+      final response = await http.get(Uri.parse(
+          "https://ff6f-114-125-77-36.ngrok-free.app/user/getId/$userId"));
       if (response.statusCode == 200) {
         return DetailResponse.fromJson(json.decode(response.body));
       } else {
@@ -99,9 +95,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       throw Exception("something went wrong");
     }
   }
+
   Future<DeleteResponse> deleteUser(String userId) async {
     try {
-      final response = await http.delete(Uri.parse("https://ff6f-114-125-77-36.ngrok-free.app/user/delete/$userId"));
+      final response = await http.delete(Uri.parse(
+          "https://ff6f-114-125-77-36.ngrok-free.app/user/delete/$userId"));
       if (response.statusCode == 200) {
         Navigator.pushReplacement(
           context,
@@ -115,8 +113,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
       throw Exception("something went wrong");
     }
   }
-
-
 }
-
-

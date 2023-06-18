@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../theme/theme.app.dart';
 import 'package:http/http.dart' as http;
 
+import '../component/app_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -27,10 +28,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<LoginResponse>? _loginFuture;
   @override
   Widget build(BuildContext context) {
+    const Scaffold(appBar: AppBarWidgets());
     return Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assests/diatas_gunung.png'),
+                image: AssetImage('assests/images/gunung_biru.png'),
                 fit: BoxFit.cover)),
         child: SizedBox(
           child: Align(
@@ -41,18 +43,26 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Card(
                   color: Colors.white,
                   child: Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.only(
+                        top: 24, left: 18, right: 18, bottom: 24),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        const Text(
+                        Text(
                           "Masuk",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 24,
                           ),
                         ),
-                        const Text("Email"),
+                        Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: Text(
+                              "Email",
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: 16),
+                            )),
                         Container(
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.black, width: 1),
@@ -64,7 +74,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        const Text("Password"),
+                        const Text(
+                          "Password",
+                          textAlign: TextAlign.justify,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 16),
+                        ),
                         Container(
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.black, width: 1),
@@ -93,7 +108,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: double
                                     .infinity, // Mengatur lebar Container agar mengisi seluruh parent
                                 child: Center(
-                                  child: Text("Login"),
+                                  child: Text("Login",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        // fontSize: 24,
+                                      )),
                                 )),
                           ),
                         ),
@@ -107,17 +126,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                       builder: (context) => RegisterScreen()));
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: greenColor,
-                              onPrimary: Colors.white,
+                              primary: Colors.white,
+                              onPrimary: Colors.black,
                             ),
                             child: Container(
                                 width: double
-                                    .infinity,
+                                    .infinity, // Mengatur lebar Container agar mengisi seluruh parent
                                 child: Center(
-                                  child: Text("Daftar"),
+                                  child: Text("Belum mempunyai akun? Daftar",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w200,
+                                          fontSize: 12)),
                                 )),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   )),

@@ -9,7 +9,7 @@ import '../screen/registerScreen.dart';
 
 class BottomNavigation extends StatefulWidget {
   final String userId;
-  const BottomNavigation({super.key,required this.userId});
+  const BottomNavigation({super.key, required this.userId});
 
   @override
   State<BottomNavigation> createState() => _BottomNavigationScreen();
@@ -34,7 +34,13 @@ class _BottomNavigationScreen extends State<BottomNavigation> {
           body: PageView(
             physics: const NeverScrollableScrollPhysics(),
             controller: pageController,
-            children: [HomeScreen(), SearchScreen(), ProfileScreen(userId: widget.userId,)],
+            children: [
+              HomeScreen(),
+              SearchScreen(),
+              ProfileScreen(
+                userId: widget.userId,
+              )
+            ],
           ),
           bottomNavigationBar: WaterDropNavBar(
             backgroundColor: Colors.white,

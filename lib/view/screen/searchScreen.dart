@@ -62,7 +62,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: Text('Error: ${snapshot.error}'),
                   );
                 } else {
-                  List<TouristSite> touristSiteResult = snapshot.data!.touristSites;
+                  List<TouristSite> touristSiteResult =
+                      snapshot.data!.touristSites;
                   return ListView.builder(
                     itemCount: touristSiteResult.length,
                     itemBuilder: (context, index) {
@@ -70,9 +71,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       return Container(
                         child: Card(
                           child: InkWell(
-                            onTap: () async {
-
-                            },
+                            onTap: () async {},
                             child: Stack(
                               children: [
                                 ShaderMask(
@@ -80,7 +79,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                     return LinearGradient(
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
-                                      colors: [Colors.transparent, Colors.black],
+                                      colors: [
+                                        Colors.transparent,
+                                        Colors.black
+                                      ],
                                       stops: [0.7, 1.0],
                                     ).createShader(bounds);
                                   },
@@ -95,10 +97,12 @@ class _SearchScreenState extends State<SearchScreen> {
                                   bottom: 16,
                                   left: 16,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        touristSiteResult[index].touristSitesName,
+                                        touristSiteResult[index]
+                                            .touristSitesName,
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 18,
@@ -130,6 +134,7 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
     );
   }
+
   Future<SearchResponse> getList({String? searchKeyword}) async {
     try {
       final response = await http.get(Uri.parse(
@@ -144,6 +149,3 @@ class _SearchScreenState extends State<SearchScreen> {
     }
   }
 }
-
-
-

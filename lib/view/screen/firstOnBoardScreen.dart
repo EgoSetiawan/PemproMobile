@@ -14,7 +14,7 @@ class FirstOnBoardScreen extends StatelessWidget {
         body: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assests/gunung_biru.png'),
+                    image: AssetImage('assests/images/gunung_biru.png'),
                     fit: BoxFit.cover)),
             child: SizedBox(
               child: Align(
@@ -23,39 +23,61 @@ class FirstOnBoardScreen extends StatelessWidget {
                   height: 260,
                   child: Card(
                       child: Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.only(
+                        top: 24, left: 18, right: 18, bottom: 24),
                     child: Column(
                       children: <Widget>[
-                        const Text(
-                          "Bingung Pilih Tempat Wisata di Jember?",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                        const Text(
-                            "Tenang, Anda sedang berada di aplikasi yang tepat untuk mencari informasi mengenai tempat wisata di Jember."),
-                          Container(
-                            margin: EdgeInsets.only(top: 40),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => OnBoardScreen()),
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.black,
-                                onPrimary: Colors.white,
+                        Expanded(
+                            flex: 1,
+                            child: Container(
+                              height: 20,
+                              child: Text(
+                                "Bingung Pilih Tempat Wisata di Jember?",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                ),
                               ),
-                              child: Container(
-                                width: double.infinity, // Mengatur lebar Container agar mengisi seluruh parent
-                                child: Center(
-                                  child: Text("Selanjutnya"),
-                                )
+                            )),
+                        Expanded(
+                            flex: 2,
+                            child: Container(
+                              child: Text(
+                                "Tenang, Anda sedang berada di aplikasi yang tepat untuk mencari informasi mengenai tempat wisata di Jember.",
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w200, fontSize: 12),
                               ),
-                            ),
-                          )
+                            )),
+                        Expanded(
+                            flex: 0,
+                            child: Container(
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              OnBoardScreen()),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    primary: Color(0xFF272735),
+                                    onPrimary: Colors.white,
+                                  ),
+                                  child: Container(
+                                    width: double
+                                        .infinity, // Mengatur lebar Container agar mengisi seluruh parent
+                                    child: Center(
+                                        child: Text("Selanjutnya",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14))),
+                                  )),
+                            ))
                       ],
                     ),
                   )),

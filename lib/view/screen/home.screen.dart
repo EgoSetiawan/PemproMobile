@@ -110,7 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<HomeResonponse> getList() async {
-
     try {
       final response = await http
           .get(Uri.parse("https://ff6f-114-125-77-36.ngrok-free.app/home/all"));

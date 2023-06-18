@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pariwisata_flutter/view/screen/loginScreen.dart';
+import 'package:pariwisata_flutter/view/screen/firstOnBoardScreen.dart';
+// import 'package:pariwisata_flutter/view/screen/loginScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +15,10 @@ class MyApp extends StatelessWidget {
       title: "HOME",
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+        fontFamily: "Poppins",
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      home: FirstOnBoardScreen(),
     );
   }
 }
-

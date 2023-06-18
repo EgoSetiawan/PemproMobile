@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class AppBarWidgets extends StatelessWidget implements PreferredSize {
   const AppBarWidgets({super.key});
@@ -7,11 +6,20 @@ class AppBarWidgets extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text("Touring Jember Nuel"),
       leading: IconButton(
-        icon: SvgPicture.asset("../assests/icon_touring_jember.svg"),
-        onPressed: (){},
+        icon: Image.asset("assests/images/icon_touring_jember.png"),
+        onPressed: () {},
       ),
+      leadingWidth: 70,
+      // ignore: prefer_const_constructors
+      title: Text(
+        "Touring Jember",
+        style: const TextStyle(
+            color: Color(0xFF198754),
+            fontWeight: FontWeight.w400,
+            fontSize: 15),
+      ),
+      titleSpacing: -5,
     );
   }
 

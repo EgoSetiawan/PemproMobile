@@ -14,7 +14,7 @@ class OnBoardScreen extends StatelessWidget {
         body: Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assests/diatas_gunung.png'),
+                    image: AssetImage('assests/images/diatas_gunung.png'),
                     fit: BoxFit.cover)),
             child: SizedBox(
               child: Align(
@@ -22,23 +22,39 @@ class OnBoardScreen extends StatelessWidget {
                 child: Container(
                   height: 260,
                   child: Card(
-                    child: Padding(padding: EdgeInsets.all(20),
-                      child:           Column(
-                        children: <Widget>[
-                          const Text(
-                              "Jember adalah kota yang kaya akan keindahan alam dan budaya.",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                          const Text(
-                              "Apa jenis wisata yang Anda sukai? Saya bisa membantu memberikan rekomendasi tempat wisata yang sesuai dengan preferensi Anda."),
-                          Container(
-                            margin: const EdgeInsets.only(top: 30),
-                            child:             Row(
-                              children: [
-                                ElevatedButton(
+                      child: Padding(
+                    padding: EdgeInsets.only(
+                        top: 24, left: 18, right: 18, bottom: 24),
+                    child: Column(
+                      children: <Widget>[
+                        Expanded(
+                            flex: 2,
+                            child: Container(
+                              child: Text(
+                                "Jember adalah kota yang kaya akan keindahan alam dan budaya.",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            )),
+                        Expanded(
+                            flex: 3,
+                            child: Container(
+                              child: Text(
+                                  "Apa jenis wisata yang Anda sukai? Saya bisa membantu memberikan rekomendasi tempat wisata yang sesuai dengan preferensi Anda.",
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w200,
+                                      fontSize: 12)),
+                            )),
+                        Expanded(
+                            flex: 0,
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 30),
+                              child: Row(
+                                children: [
+                                  ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
                                           context,
@@ -47,18 +63,24 @@ class OnBoardScreen extends StatelessWidget {
                                                   RegisterScreen()));
                                     },
                                     style: ElevatedButton.styleFrom(
-                                        primary: greenColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        primary: Color(0xFF198754),
                                         onPrimary: Colors.white),
-                                  child: const SizedBox(
-                                    width: 70,
-                                    height: 40,
-                                    child: Center(
-                                      child: Text("Daftar"),
+                                    child: const SizedBox(
+                                      width: 70,
+                                      height: 40,
+                                      child: Center(
+                                        child: Text("Daftar",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14)),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const Spacer(),
-                                ElevatedButton(
+                                  const Spacer(),
+                                  ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
                                           context,
@@ -67,27 +89,29 @@ class OnBoardScreen extends StatelessWidget {
                                                   LoginScreen()));
                                     },
                                     style: ElevatedButton.styleFrom(
-                                        primary: greenColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        primary: Color(0xFF272735),
                                         onPrimary: Colors.white),
                                     child: const SizedBox(
                                       width: 70,
-                                      height: 40,
                                       child: Center(
-                                          child: Text("Login"),
+                                        child: Text("Login",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14)),
                                       ),
-                                      ),
-                                    )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ))
+                      ],
+                    ),
+                  )),
                 ),
               ),
-            )
-        )
-    );
+            )));
   }
 }
