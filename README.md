@@ -8,3 +8,10 @@
 
 Github API
 [API-Mobile](https://github.com/EgoSetiawan/API-Mobile)
+
+VIDEO DEMO :
+[Video Demo Youtube ](https://youtu.be/9gIHxmOdYvI)
+
+Note : 
+1. API Di jalankan menggunakan ngrok
+2. API KEY GOOGLE MAPS menggunakan konfigurasi SH1 
